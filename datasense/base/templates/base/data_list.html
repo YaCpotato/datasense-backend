@@ -1,24 +1,41 @@
-<html lang="ja">
-    <head>
-        <!--vuejs-->
-        <script src="https://cdn.jsdelivr.net/npm/vue@2.6.0"></script>
+{% extends "base/base.html" %}
 
-        <!--v-calendar-->
-        <link rel='stylesheet' href='https://unpkg.com/v-calendar/lib/v-calendar.min.css'>
-        <script src='https://unpkg.com/v-calendar'></script>
-
-        <!--vue-js-modal-->
-        <script src="https://cdn.jsdelivr.net/npm/vue-js-modal@1.3.31/dist/index.min.js"></script>
-
-        <!--tailwind and other style,fonts...-->
-        <link href="https://unpkg.com/tailwindcss@^1.0/dist/tailwind.min.css" rel="stylesheet">
-        <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
-        rel="stylesheet">
-    </head>
-<body>
-    <div class="box-border md:box-content">
-        <p class="text-purple-600">Hello World</p>
-    </div>
-</body>
-<style></style>
-</html>
+{% block content %}
+    <table class="table-fixed">
+        <thead>
+        <tr>
+            <th class="w-1/2 ...">Created</th>
+            <th class="w-1/2 ...">Name</th>
+            <th class="w-1/4 ...">Columns</th>
+            <th class="w-1/4 ..."></th>
+            <th class="w-1/2 ..."></th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for data in datas %}
+            <tr>
+                <td>{{ data.created_at }}</td>
+                <td>{{ data.name }}</td>
+                <td>{{ data.columns }}</td>
+                <td>
+                    <p>{{ data.discription|linebreaksbr }}</p>
+                </td>
+                <td>
+                    <button class="flex items-center shadow bg-blue-500 px-4 py-2 text-white hover:bg-blue-400">
+                        <span class="material-icons-outlined">
+                            delete
+                        </span>
+                    </button>
+                </td>
+                <td>
+                    <button class="flex items-center shadow bg-blue-500 px-4 py-2 text-white hover:bg-blue-400">
+                        <span class="material-icons-outlined">
+                            delete
+                        </span>
+                    </button>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}
