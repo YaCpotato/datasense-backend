@@ -4,10 +4,6 @@
         <!--vuejs-->
         <script src="https://cdn.jsdelivr.net/npm/vue@2.6.0"></script>
 
-        <!--v-calendar-->
-        <link rel='stylesheet' href='https://unpkg.com/v-calendar/lib/v-calendar.min.css'>
-        <script src='https://unpkg.com/v-calendar'></script>
-
         <!--vue-js-modal-->
         <script src="https://cdn.jsdelivr.net/npm/vue-js-modal@1.3.31/dist/index.min.js"></script>
 
@@ -16,11 +12,14 @@
         <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/forms"></script>
         <script src="https://kit.fontawesome.com/fff52c779c.js" crossorigin="anonymous"></script>
         <link rel="stylesheet" href="{% static 'css/base.css' %}">
+        <script src="{% static 'css/modal.js' %}"></script>
+
     </head>
     <body>
         <div class="page-header">
             {% if user.is_authenticated %}
                 <p class="top-menu">Hello {{ user.username }} <small>(<a href="{% url 'logout' %}"><i class="fas fa-sign-out-alt"></i></a>)</small></p>
+                <a href="{% url 'add_data' %}" class="top-menu"><i class="fas fa-plus"></i><i class="fas fa-database"></i></a>
             {% else %}
                 <a href="{% url 'login' %}" class="top-menu"><i class="fas fa-sign-in-alt"></i></a>
             {% endif %}

@@ -1,0 +1,74 @@
+{% extends "base/base.html" %}
+
+{% block content %}
+<div id="app">
+<modal id="add-modal" 
+    name="add-modal"
+    :clickToClose="false"
+    :minWidth="500"
+    :minHeight="700"
+    height="65%"
+    class="p-16"
+    >
+          <p class="text-center text-gray-700 font-bold text-4xl">Please tell me first</p>
+          <p class="text-gray-600 text-lg text-center">
+            Please stop spamming other people.
+          </p>
+          <div class="mb-4 justify-center items-center">
+            <div class="container text-center mx-auto p-4">
+                <label class="block text-gray-600 text-sm font-semibold m-2" for="length">
+                    How length your data have?
+                  </label>
+                  <input
+                    class="bg-gray-100 appearance-none border rounded w-3/12 py-2 px-3 m-2 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                    id="length"
+                    type="number"
+                    placeholder="1~10000"
+                    min=1
+                    max=10000
+                  />
+            </div>
+            <div class="container text-center mx-auto p-4">
+                <label class="block text-gray-600 text-sm font-semibold m-2" for="index">
+                    Index label
+                  </label>
+                  <input
+                    class="bg-gray-100 appearance-none border rounded w-6/12 py-2 px-3 m-2 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                    id="index"
+                    type="text"
+                    placeholder="label name"
+                  />
+            </div>
+          </div>
+          <div class="flex justify-center items-center mt-6">
+            <div class="container text-center mx-auto p-4">
+                <h1 class="text-2xl text-gray-800 font-bold mb-4">data type</h1>
+                <div class="flex justify-center rounded-lg text-lg mb-4" role="group">
+                  <button class="bg-blue-500 text-white hover:bg-blue-400 rounded-lg px-4 py-2 m-2 outline-none focus:shadow-outline">Categorical</button>
+                  <button class="bg-blue-500 text-white hover:bg-blue-400 rounded-lg px-4 py-2 m-2 outline-none focus:shadow-outline">TimeSeries</button>
+                </div>
+              </div>
+          </div>
+</modal>
+</div>
+<script>
+Vue.use(window["vue-js-modal"].default);
+
+var app = new Vue({
+    el:'#app',
+    data:{
+    name:'',
+    columns:'',
+    discription:'',
+    },
+    methods:{
+    hide : function () {
+        this.$modal.hide('add-modal');
+    }
+    },
+    mounted:function () {
+        this.$modal.show('add-modal');
+    }
+})
+</script>
+{% endblock %}

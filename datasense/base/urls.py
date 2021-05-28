@@ -6,4 +6,5 @@ urlpatterns = [
     path('accounts/login/', v.LoginView.as_view(), name='login'),
     path('accounts/logout/', v.LogoutView.as_view(next_page='/'), name='logout'),
     path('', views.data_list, name='data_list'),
+    path('/add_data', views.add_data, name='add_data'),
 ]
